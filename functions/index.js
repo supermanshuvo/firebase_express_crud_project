@@ -61,6 +61,20 @@ app.get("/api/read/:id",async (req,res)=>{
   }
 });
 
+// Update Specific Data
+app.put("/api/update/:id",async (req,res)=>{
+  try {
+    const document = await db.collection('userInfo').doc(req.params.id).update({
+      name:req.body.name,
+      mobile: req.body.mobile,
+      address : req.body.address,
+    });
+    return res.status(200).send("Data Updated");
+  }catch (e) {
+    return res.status(404).send({status:"Failed",msg:"This data is not available or added for update"});
+  }
+});
+
 // Delete Specific Data
 app.delete("/api/delete/:id",async (req,res)=>{
   try {
