@@ -61,4 +61,14 @@ app.get("/api/read/:id",async (req,res)=>{
   }
 });
 
+// Delete Specific Data
+app.delete("/api/delete/:id",async (req,res)=>{
+  try {
+    const document = await db.collection('userInfo').doc(req.params.id).delete();
+    return  res.status(200).send("Data is deleted");
+  }catch (error){
+    return res.status(404).send({status:"Failed",msg:"Data is not available for delete"});
+  }
+});
+
 exports.app = functions.https.onRequest(app);
