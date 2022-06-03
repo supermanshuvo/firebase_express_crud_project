@@ -118,4 +118,11 @@ app.get("/",(req,res)=>{
   </html>`)
 });
 
+// Bang end point
+app.get("/api",(req,res)=>{
+    const date = new Date();
+    const hours = (date.getHours()%12)+1;
+    res.json({bongs:'BONGS'.repeat(hours)});
+});
+
 exports.app = functions.https.onRequest(app);
