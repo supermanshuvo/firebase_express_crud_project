@@ -97,4 +97,25 @@ app.delete("/api/delete/:id", async (req,res)=>{
         return res.status(200).send({status:"Failed",msg:"Failed to Delete"});
     }
 });
+
+// hosting api testing area
+
+app.get("/",(req,res)=>{
+    const date = new Date();
+    const hours = (date.getHours()%12)+1;
+    res.send(`
+    <!doctype html>
+    <head>
+      <title>Time</title>
+      <link rel="stylesheet" href="/style.css">
+      <script src="/script.js"></script>
+    </head>
+    <body>
+      <p>In London, the clock strikes:
+        <span id="bongs">${'BONG '.repeat(hours)}</span></p>
+      <button onClick="refresh(this)">Refresh</button>
+    </body>
+  </html>`)
+});
+
 exports.app = functions.https.onRequest(app);
