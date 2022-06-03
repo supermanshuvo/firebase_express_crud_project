@@ -1,9 +1,15 @@
 const functions = require("firebase-functions");
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+/*
+  * Require firebase admin, express and cors
+  * for the work
+ */
+
+const admin = require('firebase-admin');
+const express = require('express');
+const cors = require('cors');
+/*
+*   For key.json you need to create it
+*   @ Project setting -> Service account -> Generate new private key button
+*   then rename it key.json or any name you want
+* */
